@@ -2,16 +2,28 @@
 #' title: "run_analysis.R"
 #' date: "May 12th 2018"
 #' ---
+#
+#
+#
 ## What is this 
 # A script includes a function to read test and training data sets and to clean them up.
 # I am including the reading part in case someone wants to rerun it.
 ## Result:
 #  * mean_std_humanactivity: mean and stdev of all observations signals for the training and test data sets
 #  * meanbyactivy_subject:  mean (avg and stdev) of signals by activity and subject data set
+#  * A csv file is generated for each of the data sets. See CodeBook.{md,html} for more information about the source of the data and the content.
+#  
 #
+## How to use run_analysis.R
+#
+#  * Extract the zip file
+#  * Set WORKINGDIR to the top directory where you extracted the file from
+#  * Run: Rscript ./run_analysis.R
+#  
+#  
 ## WORKINGDIR
-# Change the location of the root dir (top directory) where the data sets are
-# and set current working directory to it (use setwd(WORKINGDIR)
+#  Change the location of the root dir (top directory) where the data sets are
+#  and set current working directory to it (use setwd(WORKINGDIR)
 #
 # 
 WORKINGDIR="/home/eh/Desktop/training-tutorials-classes/R-johnhopkins/hw/ds/dataset"
@@ -237,8 +249,10 @@ dim(meanbyactivy_subject)
 #  * mean_std_humanactivity: contains the mean of observations and their standard deviations
 #  * meanbyactivy_subject: contains the means of all variables and all observations from mean_std_humanactivity.
 
-write.csv(mean_std_humanactivity, "./mean_std_humanactivity.csv");
-write.csv(meanbyactivy_subject, "./meanbyactivy_subject.csv");
+#write.csv(mean_std_humanactivity, "./mean_std_humanactivity.csv");
+#write.csv(meanbyactivy_subject, "./meanbyactivy_subject.csv");
+write.table(mean_std_humanactivity, "./mean_std_humanactivity.csv", row.name=FALSE );
+write.table(meanbyactivy_subject, "./meanbyactivy_subject.csv", row.name=FALSE );
 
 
 
